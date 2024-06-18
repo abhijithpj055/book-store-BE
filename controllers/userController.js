@@ -77,12 +77,25 @@ export const getUser=async(req,res)=>{
 
 //delete user
 
+// export const deleteUser=async(req,res)=>{
+//     const id=req.params.id;
+
+//     const deletedUser=await User.deleteOne({_id:id})
+//     if(!deletedUser){
+//         return res.send("User not deleted")
+//     }
+//     res.send("User deleted")
+// }
+
 export const deleteUser=async(req,res)=>{
     const id=req.params.id;
-
-    const deletedUser=await User.deleteOne({_id:id})
-    if(!deletedUser){
-        return res.send("User not deleted")
+    const user=await User.find({_id:id})
+    if(!user){
+        return res.send("User not exist")
     }
-    res.send("User deleted")
+    const remove=await User.deleteOne({_id:id})
+    if(!remove){
+        return res.send("Failed to remove")
+    }
+    return res.send("Removed Successfully")
 }

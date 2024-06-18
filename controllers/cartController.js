@@ -6,14 +6,14 @@ import User from "../models/userModel.js"
 export const addToCart=async(req,res)=>{
 try {
     const {bookid,id}=req.headers;
-    const userData=await User.find(id)
-    const bookInCart=userData.cart.includes(bookid)
-    if(bookInCart){
-        return res.json({
-            status:"Success",
-            message:"Book is already in cart"
-        })
-    }
+    // const userData=await User.find(id)
+    // const bookInCart=userData.cart.includes(bookid)
+    // if(bookInCart){
+    //     return res.json({
+    //         status:"Success",
+    //         message:"Book is already in cart"
+    //     })
+    // }
     await User.findByIdAndUpdate(id,{
         $push:{cart:bookid},
     })
@@ -39,7 +39,7 @@ export const removeFromCart=async(req,res)=>{
         })
         return res.json({
             status:"Success",
-            message:"Bok removed from cart",
+            message:"Book removed from cart",
         })
     } catch (error) {
         console.log(error)

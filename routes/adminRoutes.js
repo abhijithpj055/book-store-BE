@@ -19,8 +19,8 @@ adminRouter.post('/add-books',upload.single("image"),addBooks)
 adminRouter.put('/update-books/:id',updateBook)
 adminRouter.delete('/delete-books/:id',deleteBook)
 
-adminRouter.get('/get-usercart',getUserCart)
-adminRouter.get('/get-order-history',getOrderHistory)
+adminRouter.get('/get-usercart/:id',getUserCart)
+adminRouter.get('/get-order-history/:id',getOrderHistory)
 adminRouter.get('/get-all-orders',getAllOrders)
-adminRouter.put('/update-order',updateOrder)
+adminRouter.put('/update-order/:id',updateOrder)
 export default adminRouter

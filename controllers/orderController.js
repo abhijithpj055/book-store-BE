@@ -5,6 +5,8 @@ export const placeOrder=async(req,res)=>{
     try {
         const {id}=req.headers;
         const {order}=req.body;
+        console.log(req.body)
+        console.log(order)
         for (const orderData of order){
             const newOrder =new Order({user:id,book:orderData._id})
             const orderDataFromDb=await newOrder.save();
@@ -16,7 +18,7 @@ export const placeOrder=async(req,res)=>{
             await User.findByIdAndUpdate(id,{
                 $pull:{cart:orderData._id},
             })
-        }
+        } 
         return res.json({
             status:"Success",
             message:"Order Placed Successfully"
@@ -33,7 +35,7 @@ export const getOrderHistory=async(req,res)=>{
     try {
         const {id}=req.headers;
         const userData=await User.findById(id).populate({
-            path:"orders",
+            path:"Order",
             populate:{path:"book"},
         })
 

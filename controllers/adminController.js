@@ -29,7 +29,7 @@ export const signup=async(req,res)=>{
     }
     const token=adminToken(newAdmin)
     res.cookie("token",token)
-    res.send("Signed In Successfully")
+    res.send("Admin Signed In Successfully")
      
     } catch (error) {
         console.log(error,"Something went to wrong")
@@ -53,7 +53,7 @@ export const signin=async(req,res)=>{
 
         const token=adminToken(admin)
         res.cookie("token",token)
-        res.send("Logged in succesfully")
+        res.send("Admin Logged in succesfully")
     } catch (error) {
      console.log(error);
      res.status(500).send("Internal sever error")   

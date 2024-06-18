@@ -3,10 +3,19 @@ import { connectDb } from '../config/db.js'
 import userRouter from '../routes/userRoutes.js'
 import adminRouter from '../routes/adminRoutes.js'
 import paymentRouter from '../routes/paymentRoutes.js'
+import cors from 'cors'
 const app=express()
 const port=3000
 
 app.use(express.json())
+let corsOption={
+  origin:'http://localhost:5173',
+  credentials:true,
+  optiomSuccessStatus:200
+}
+
+app.use(cors(corsOption))
+
 
 
 connectDb()

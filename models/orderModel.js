@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema({
         },
         status: {
                 type: String,
-                default: "Order placed",
+                default: "Order Placed",
                 enum: ["Order Placed", "Out for delivery,Delivered,Cancelled"]
         }
 
@@ -22,4 +22,5 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model("Order", orderSchema)
 
 export default Order
+
 
