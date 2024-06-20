@@ -1,5 +1,6 @@
 import express from 'express'
 import { connectDb } from '../config/db.js'
+import cookieParser from 'cookie-parser'
 import userRouter from '../routes/userRoutes.js'
 import adminRouter from '../routes/adminRoutes.js'
 import paymentRouter from '../routes/paymentRoutes.js'
@@ -15,6 +16,8 @@ let corsOption={
 }
 
 app.use(cors(corsOption))
+app.use(cookieParser())
+
 
 
 
