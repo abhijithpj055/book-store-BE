@@ -9,7 +9,7 @@ const port=3000
 
 app.use(express.json())
 let corsOption={
-  origin:'https://book-store-fe-one.vercel.app',
+  origin:'https://book-store-fe-one.vercel.app/',
   credentials:true,
   optiomSuccessStatus:200
 }
