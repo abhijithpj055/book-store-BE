@@ -18,9 +18,6 @@ let corsOption={
 app.use(cors(corsOption))
 app.use(cookieParser())
 
-
-
-
 connectDb()
 
 app.get('/', (req, res) => {

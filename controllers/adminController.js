@@ -46,14 +46,16 @@ export const signin=async(req,res)=>{
         if(!admin){
             res.send("Admin is not found")
         }
-        const matchPassword= await bcrypt.compare(password,admin.hashPassword)
-        if(!matchPassword){
-            res.send("Incorrect Password")
-        }
-
-        const token=adminToken(admin)
-        res.cookie("token",token)
-        res.send("Admin Logged in succesfully")
+         bcrypt.compare(password,admin.hashPassword,(err,matchPassword)=>{
+            if(!matchPassword){
+                res.send("Incorrect Password")
+            }
+    
+            const token=adminToken(admin)
+            res.cookie("token",token)
+            res.send("Admin Logged in succesfully")
+    
+         })
     } catch (error) {
      console.log(error);
      res.status(500).send("Internal sever error")   
