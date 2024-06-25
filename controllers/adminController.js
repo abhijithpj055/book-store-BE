@@ -63,3 +63,17 @@ export const signin=async(req,res)=>{
 }
 
 
+// check admin
+export const checkAdmin=async(req,res)=>{
+    const admin = req.admin;
+  
+    console.log("data", admin.data);
+    const findAdmin = await Admin.findOne({ email: admin.data });
+  
+    if (!findAdmin) {
+      return res.json({ message: "authentication failed", success: false });
+    }
+    
+    res.json({ message: "authenticateAdmin", success: true });
+
+}

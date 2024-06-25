@@ -9,6 +9,18 @@ export const getBooks=async(req,res)=>{
     res.send(books)
 }
 
+//get book by id
+export const getBookbyId=async(req,res)=>{
+    try {
+const {id}=req.params;
+const book =await Book.findById(id)
+return res.json({status:"Success",data:book,})
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({message:"an error occured"})
+    }
+}
+
 //add books
 
 export const addBooks=async(req,res)=>{

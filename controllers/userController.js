@@ -75,6 +75,19 @@ export const getUser=async(req,res)=>{
 }
 
 
+//get-user-information
+
+export const getUserInfo =async(req,res)=>{
+    try {
+        const {id} =req.headers;
+        const data=await User.findById(id).select("password")
+        return res.status(200).json(data)
+    } catch (error) {
+        res.status(500).json({message:"Internal server error"})
+    }
+}
+
+
 //delete user
 
 // export const deleteUser=async(req,res)=>{
@@ -98,4 +111,20 @@ export const deleteUser=async(req,res)=>{
         return res.send("Failed to remove")
     }
     return res.send("Removed Successfully")
+}
+
+//check user
+
+export const checkUser=async(req,res)=>{
+    const user = req.user;
+  
+    console.log("data", user.data);
+    const findUser = await User.findOne({ email: user.data });
+  
+    if (!findUser) {
+      return res.json({ message: "authentication failed", success: false });
+    }
+    
+    res.json({ message: "authenticateUser", success: true });
+
 }
