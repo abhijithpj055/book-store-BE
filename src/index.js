@@ -10,7 +10,7 @@ const port=3000
 
 app.use(express.json())
 let corsOption={
-  origin:'https://book-store-fe.onrender.com',
+  origin:'http://localhost:5173',
   credentials:true,
   optiomSuccessStatus:200
 }

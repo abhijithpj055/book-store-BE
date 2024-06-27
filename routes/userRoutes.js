@@ -5,7 +5,10 @@ import { addToCart, removeFromCart } from '../controllers/cartController.js'
 import { placeOrder } from '../controllers/orderController.js'
 
 const userRouter = express.Router()
+userRouter.get('/',(req,res)=>{
 
+    res.send("Hitted")
+})
 userRouter.post('/signup',signup)
 userRouter.post('/signin',signin)
 userRouter.get('/check-user',checkUser)
